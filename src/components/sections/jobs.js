@@ -67,29 +67,29 @@ const StyledTabButton = styled.button`
   height: ${theme.tabHeight}px;
   padding: 0 20px 2px;
   transition: ${theme.transition};
-  border-left: 2px solid ${colors.lightestGray};
+  border-left: 2px solid ${colors.lightestBg};
   text-align: left;
   white-space: nowrap;
   font-family: ${fonts.SFMono};
   font-size: ${fontSizes.smish};
-  color: ${props => (props.isActive ? colors.green : colors.slate)};
+  color: ${props => (props.isActive ? colors.accent : colors.slate)};
   ${media.tablet`padding: 0 15px 2px;`};
   ${media.thone`
     ${mixins.flexCenter};
     padding: 0 15px;
     text-align: center;
     border-left: 0;
-    border-bottom: 2px solid ${colors.lightestGray};
+    border-bottom: 2px solid ${colors.lightestBg};
     min-width: 120px;
   `};
   &:hover,
   &:focus {
-    background-color: ${colors.lightGray};
+    background-color: ${colors.lightBg};
   }
 `;
 const StyledHighlight = styled.span`
   display: block;
-  background: ${colors.green};
+  background: ${colors.accent};
   width: 2px;
   height: ${theme.tabHeight}px;
   border-radius: ${theme.borderRadius};
@@ -146,7 +146,7 @@ const StyledJobTitle = styled.h4`
   margin-bottom: 5px;
 `;
 const StyledCompany = styled.h6`
-  color: ${colors.green};
+  color: ${colors.accent};
   font-size: ${fontSizes.lg};
   font-weight: 500;
   margin-bottom: 5px;
@@ -223,7 +223,8 @@ const Jobs = ({ data }) => {
                     role="tab"
                     aria-selected={activeTabId === i ? true : false}
                     aria-controls={`panel-${i}`}
-                    tabIndex={activeTabId === i ? '0' : '-1'}>
+                    tabIndex={activeTabId === i ? '0' : '-1'}
+                  >
                     <span>{company}</span>
                   </StyledTabButton>
                 </li>
@@ -244,7 +245,8 @@ const Jobs = ({ data }) => {
                 role="tabpanel"
                 aria-labelledby={`tab-${i}`}
                 tabIndex={activeTabId === i ? '0' : '-1'}
-                hidden={activeTabId !== i}>
+                hidden={activeTabId !== i}
+              >
                 <StyledJobTitle>{title}</StyledJobTitle>
                 <StyledCompany>{company}</StyledCompany>
                 <StyledJobDetails>

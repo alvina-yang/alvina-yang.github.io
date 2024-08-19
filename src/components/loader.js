@@ -78,7 +78,7 @@ const StyledDot = styled.span`
   height: 10px;
   width: 10px;
   border-radius: 50%;
-  background-color: ${colors.green};
+  background-color: ${colors.accent};
   &:nth-child(1) {
     animation: ${rotateY} 0.7s infinite linear;
   }

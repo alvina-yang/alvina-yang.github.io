@@ -76,7 +76,7 @@ const TechnologyItem = styled.div`
   margin-bottom: 20px;
 
   h4 {
-    color: ${colors.green};
+    color: ${colors.accent};
   }
 
   ul {
@@ -96,10 +96,10 @@ const TechnologyItem = styled.div`
   li {
     font-family: ${fonts.SFMono};
     font-size: ${fontSizes.smish};
-    color: ${colors.green};
+    color: ${colors.accent};
     &:before {
       content: '▹';
-      color: ${colors.green};
+      color: ${colors.accent};
       margin-right: 10px;
     }
   }

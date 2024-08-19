@@ -3,25 +3,24 @@ import { hex2rgba } from '@utils';
 const ACCENT = '#8FFF5A';
 const DARK_BG = '#101010';
 const BG = '#161616';
-const TRANSLUCENT_BG = '#1f1f1f';
 
 const theme = {
   colors: {
     darkBg: DARK_BG,
     bg: BG,
-    lightGray: TRANSLUCENT_BG,
-    lightestGray: '#343434',
+    lightBg: '#1f1f1f',
+    lightestBg: '#343434',
     slate: '#B2BBD3',
     lightSlate: '#D0D5E1',
     lightestSlate: '#E7F0F7',
     white: '#EDFAFF',
-    green: ACCENT,
+    accent: ACCENT,
     transGreen: hex2rgba(ACCENT, 0.07),
     transWhite: hex2rgba('#EDFAFF', 0.9),
-    transLightGray: hex2rgba(TRANSLUCENT_BG, 0.9),
-    transLightestGray: hex2rgba('#343434', 0.9),
+    transLightBg: hex2rgba('#1f1f1f', 0.9),
+    transLightestBg: hex2rgba('#343434', 0.9),
     shadowbg: hex2rgba(DARK_BG, 0.7),
-    transbg: hex2rgba(TRANSLUCENT_BG, 0.95),
+    transbg: hex2rgba('#1f1f1f', 0.95),
   },
 
   fonts: {

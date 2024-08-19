@@ -11,6 +11,8 @@ import {
   IconLogo,
   IconStar,
   IconZap,
+  IconDarkMode,
+  IconYassifyMode,
 } from '@components/icons';
 
 const FormattedIcon = ({ name }) => {
@@ -35,6 +37,10 @@ const FormattedIcon = ({ name }) => {
       return <IconStar />;
     case 'Zap':
       return <IconZap />;
+    case 'DarkMode':
+      return <IconDarkMode />;
+    case 'YassifyMode':
+      return <IconYassifyMode />;
     default:
       return <IconExternal />;
   }

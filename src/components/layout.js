@@ -4,9 +4,10 @@ import PropTypes from 'prop-types';
 import { Loader, Nav, Social, Email, Footer } from '@components';
 import styled from 'styled-components';
 import { GlobalStyle, theme } from '@styles';
+import { ThemeProvider } from '../contexts/ThemeContext';
+
 const { colors, fontSizes, fonts } = theme;
 
-// https://medium.com/@chrisfitkin/how-to-smooth-scroll-links-in-gatsby-3dc445299558
 if (typeof window !== 'undefined') {
   // eslint-disable-next-line global-require
   require('smooth-scroll')('a[href*="#"]');
@@ -23,8 +24,8 @@ const SkipToContent = styled.a`
   &:focus,
   &:active {
     outline: 0;
-    color: ${colors.green};
-    background-color: ${colors.lightGray};
+    color: ${colors.accent};
+    background-color: ${colors.lightBg};
     border-radius: ${theme.borderRadius};
     padding: 18px 23px;
     font-size: ${fontSizes.sm};
@@ -81,26 +82,28 @@ const Layout = ({ children, location }) => {
         }
       `}
       render={() => (
-        <div id="root">
-          <GlobalStyle />
+        <ThemeProvider>
+          <div id="root">
+            <GlobalStyle />
 
-          <SkipToContent href="#content">Skip to Content</SkipToContent>
+            <SkipToContent href="#content">Skip to Content</SkipToContent>
 
-          {isLoading && isHome ? (
-            <Loader finishLoading={() => setIsLoading(false)} />
-          ) : (
-            <StyledContent>
-              <Nav isHome={isHome} />
-              <Social isHome={isHome} />
-              <Email isHome={isHome} />
+            {isLoading && isHome ? (
+              <Loader finishLoading={() => setIsLoading(false)} />
+            ) : (
+              <StyledContent>
+                <Nav isHome={isHome} />
+                <Social isHome={isHome} />
+                <Email isHome={isHome} />
 
-              <div id="content">
-                {children}
-                <Footer />
-              </div>
-            </StyledContent>
-          )}
-        </div>
+                <div id="content">
+                  {children}
+                  <Footer />
+                </div>
+              </StyledContent>
+            )}
+          </div>
+        </ThemeProvider>
       )}
     />
   );

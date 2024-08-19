@@ -20,7 +20,7 @@ const StyledContainer = styled(Section)`
 `;
 const StyledHeading = styled(Heading)`
   display: block;
-  color: ${colors.green};
+  color: ${colors.accent};
   font-size: ${fontSizes.md};
   font-family: ${fonts.SFMono};
   font-weight: normal;
@@ -58,7 +58,7 @@ const StyledResumeLink = styled.a`
 
     &:hover,
     &:focus {
-      color: ${colors.green};
+      color: ${colors.accent};
     }
   }
 `;

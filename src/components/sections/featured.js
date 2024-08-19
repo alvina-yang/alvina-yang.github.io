@@ -26,7 +26,7 @@ const StyledContainer = styled(Section)`
     width: 10px;
   }
   .swiper-pagination-bullet {
-    background-color: ${colors.green};
+    background-color: ${colors.accent};
   }
 `;
 const StyledContent = styled.div`
@@ -60,7 +60,7 @@ const StyledDescription = styled.div`
   position: relative;
   z-index: 2;
   padding: 25px;
-  background-color: ${colors.lightGray};
+  background-color: ${colors.lightBg};
   color: ${colors.lightSlate};
   font-size: ${fontSizes.lg};
   border-radius: ${theme.borderRadius};
@@ -94,7 +94,7 @@ const StyledTechList = styled.ul`
   li {
     font-family: ${fonts.SFMono};
     font-size: ${fontSizes.smish};
-    color: ${colors.green};
+    color: ${colors.accent};
     margin-right: ${theme.margin};
     margin-bottom: 7px;
     white-space: nowrap;
@@ -102,7 +102,7 @@ const StyledTechList = styled.ul`
       margin-right: 0;
     }
     ${media.thone`
-      color: ${colors.green};
+      color: ${colors.accent};
       margin-right: 10px;
     `};
   }

@@ -6,7 +6,8 @@ import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { throttle } from '@utils';
 import { navLinks, navHeight } from '@config';
 import { Menu } from '@components';
-import { IconLogo } from '@components/icons';
+import ThemeContext from '../contexts/ThemeContext';
+import { IconLogo, FormattedIcon } from '@components/icons';
 import styled from 'styled-components';
 import { theme, mixins, media, Dot } from '@styles';
 const { colors, fontSizes, fonts, loaderDelay } = theme;
@@ -16,7 +17,7 @@ const StyledContainer = styled.header`
   position: fixed;
   top: 0;
   padding: 0px 50px;
-  background-color: ${colors.lightGray};
+  background-color: ${colors.lightBg};
   transition: ${theme.transition};
   z-index: 11;
   filter: none !important;
@@ -45,7 +46,7 @@ const StyledLogo = styled.div`
   ${mixins.flexCenter};
   a {
     display: block;
-    color: ${colors.green};
+    color: ${colors.accent};
     width: 60px;
     height: 60px;
     &:hover,
@@ -84,7 +85,7 @@ const StyledHamburgerBox = styled.div`
   height: 24px;
 `;
 const StyledHamburgerInner = styled.div`
-  background-color: ${colors.green};
+  background-color: ${colors.accent};
   position: absolute;
   width: ${theme.hamburgerWidth}px;
   height: 2px;
@@ -103,7 +104,7 @@ const StyledHamburgerInner = styled.div`
   &:after {
     content: '';
     display: block;
-    background-color: ${colors.green};
+    background-color: ${colors.accent};
     position: absolute;
     left: auto;
     right: 0;
@@ -150,16 +151,34 @@ const StyledListLink = styled(Link)`
   padding: 12px 10px;
   display: flex; // This ensures the dot and the name align properly
   align-items: center; // Centers the dot vertically with the text
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+`;
+const StyledMode = styled.div`
+  padding: 12px 10px;
+  margin: 0 10px;
+  transition: ${theme.transition};
+  width: 50px;
+  display: flex;
+  justify-content: center; // Center horizontally
+  align-items: center; // Center vertically
 `;
 
 const DELTA = 5;
 
 class Nav extends Component {
+  static contextType = ThemeContext; // Use ThemeContext here directly
+
   state = {
     isMounted: !this.props.isHome,
     menuOpen: false,
     scrollDirection: 'none',
     lastScrollTop: 0,
+  };
+
+  toggleIconMode = () => {
+    this.context.toggleTheme();
   };
 
   componentDidMount() {
@@ -180,7 +199,9 @@ class Nav extends Component {
     window.removeEventListener('keydown', e => this.handleKeydown(e));
   }
 
-  toggleMenu = () => this.setState({ menuOpen: !this.state.menuOpen });
+  toggleMenu = () => {
+    this.setState(prevState => ({ menuOpen: !prevState.menuOpen }));
+  };
 
   handleScroll = () => {
     const { isMounted, menuOpen, scrollDirection, lastScrollTop } = this.state;
@@ -228,6 +249,8 @@ class Nav extends Component {
     const timeout = isHome ? loaderDelay : 0;
     const fadeClass = isHome ? 'fade' : '';
     const fadeDownClass = isHome ? 'fadedown' : '';
+    const { themeName } = this.context; // Destructure themeName from context
+    const iconMode = themeName === 'DarkMode' ? 'DarkMode' : 'YassifyMode';
 
     return (
       <StyledContainer scrollDirection={scrollDirection}>
@@ -283,6 +306,9 @@ class Nav extends Component {
                       </StyledListItem>
                     </CSSTransition>
                   ))}
+                <StyledMode onClick={this.toggleIconMode}>
+                  <FormattedIcon name={iconMode} />
+                </StyledMode>
               </TransitionGroup>
             </StyledList>
 
@@ -295,7 +321,6 @@ class Nav extends Component {
             </TransitionGroup>
           </StyledLink>
         </StyledNav>
-
         <Menu menuOpen={menuOpen} toggleMenu={this.toggleMenu} />
       </StyledContainer>
     );

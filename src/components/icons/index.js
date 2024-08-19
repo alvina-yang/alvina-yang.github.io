@@ -8,3 +8,5 @@ export { default as IconLocation } from './location';
 export { default as IconLogo } from './logo';
 export { default as IconStar } from './star';
 export { default as IconZap } from './zap';
+export { default as IconDarkMode } from './darkMode.js';
+export { default as IconYassifyMode } from './yassifyMode.js';

@@ -54,7 +54,7 @@ const StyledProjectInner = styled.div`
   height: 100%;
   border-radius: ${theme.borderRadius};
   transition: ${theme.transition};
-  background-color: ${colors.lightGray};
+  background-color: ${colors.lightBg};
 `;
 const StyledProject = styled.div`
   transition: ${theme.transition};
@@ -72,7 +72,7 @@ const StyledProjectHeader = styled.div`
   margin-bottom: 30px;
 `;
 const StyledFolder = styled.div`
-  color: ${colors.green};
+  color: ${colors.accent};
   svg {
     width: 40px;
     height: 40px;
@@ -117,7 +117,7 @@ const StyledTechList = styled.ul`
   li {
     font-family: ${fonts.SFMono};
     font-size: ${fontSizes.xs};
-    color: ${colors.green};
+    color: ${colors.accent};
     line-height: 1.75;
     margin-right: 15px;
     &:last-of-type {

@@ -51,7 +51,7 @@ const StyledPostInner = styled.div`
   height: 100%;
   border-radius: ${theme.borderRadius};
   transition: ${theme.transition};
-  background-color: ${colors.lightGray};
+  background-color: ${colors.lightBg};
   header,
   a {
     width: 100%;
@@ -73,7 +73,7 @@ const StyledPostHeader = styled.div`
   margin-bottom: 30px;
 `;
 const StyledFolder = styled.div`
-  color: ${colors.green};
+  color: ${colors.accent};
   svg {
     width: 40px;
     height: 40px;
@@ -105,7 +105,7 @@ const StyledTags = styled.ul`
   li {
     font-family: ${fonts.SFMono};
     font-size: ${fontSizes.xs};
-    color: ${colors.green};
+    color: ${colors.accent};
     line-height: 1.75;
     margin-right: 15px;
     &:last-of-type {
@@ -134,7 +134,8 @@ const PensievePage = ({ location, data }) => {
             <a
               href="https://www.wizardingworld.com/writing-by-jk-rowling/pensieve"
               target="_blank"
-              rel="noopener noreferrer">
+              rel="noopener noreferrer"
+            >
               a collection of memories
             </a>
           </p>

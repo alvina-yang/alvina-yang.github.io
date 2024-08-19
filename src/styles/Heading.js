@@ -14,7 +14,7 @@ const Heading = styled.h3`
   ${media.tablet`font-size: 24px;`};
 
   &:hover {
-    color: ${colors.green}; // Change text color to green on hover
+    color: ${colors.accent}; // Change text color to green on hover
   }
 
   &:after {
@@ -22,7 +22,7 @@ const Heading = styled.h3`
     display: block;
     height: 1px;
     width: 300px;
-    background-color: ${colors.lightestGray};
+    background-color: ${colors.lightestBg};
     position: relative;
     top: -5px;
     margin-left: 20px;

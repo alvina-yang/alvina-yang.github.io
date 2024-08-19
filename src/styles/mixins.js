@@ -31,7 +31,7 @@ const mixins = {
     &:hover,
     &:active,
     &:focus {
-      color: ${colors.green};
+      color: ${colors.accent};
       outline: 0;
     }
   `,
@@ -43,17 +43,17 @@ const mixins = {
     position: relative;
     transition: ${theme.transition};
     cursor: pointer;
-    color: ${colors.green};
+    color: ${colors.accent};
     &:hover,
     &:focus,
     &:active {
-      color: ${colors.green};
+      color: ${colors.accent};
       outline: 0;
       &:after {
         width: 100%;
       }
       & > * {
-        color: ${colors.green} !important;
+        color: ${colors.accent} !important;
         transition: ${theme.transition};
       }
     }
@@ -64,16 +64,16 @@ const mixins = {
       height: 2px;
       position: relative;
       bottom: 0.17em;
-      background-color: ${colors.green};
+      background-color: ${colors.accent};
       transition: ${theme.transition};
       opacity: 0.8;
     }
   `,
 
   smallButton: css`
-    color: ${colors.green};
+    color: ${colors.accent};
     background-color: transparent;
-    border: 1px solid ${colors.green};
+    border: 1px solid ${colors.accent};
     border-radius: ${theme.borderRadius};
     padding: 0.75rem 1rem;
     font-size: ${fontSizes.smish};
@@ -93,9 +93,9 @@ const mixins = {
   `,
 
   bigButton: css`
-    color: ${colors.green};
+    color: ${colors.accent};
     background-color: transparent;
-    border: 1.5px solid ${colors.green};
+    border: 1.5px solid ${colors.accent};
     border-radius: ${theme.borderRadius};
     padding: 1.15rem 1.75rem;
     font-size: ${fontSizes.xl};
@@ -145,7 +145,7 @@ const mixins = {
         content: '▹';
         position: absolute;
         left: 0;
-        color: ${colors.green};
+        color: ${colors.accent};
       }
     }
   `,
