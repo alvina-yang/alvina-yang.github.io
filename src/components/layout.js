@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import { Loader, Nav, Social, Email, Footer } from '@components';
 import styled from 'styled-components';
 import { GlobalStyle, theme } from '@styles';
-import { ThemeProvider } from '../contexts/ThemeContext';
 
 const { colors, fontSizes, fonts } = theme;
 
@@ -82,28 +81,26 @@ const Layout = ({ children, location }) => {
         }
       `}
       render={() => (
-        <ThemeProvider>
-          <div id="root">
-            <GlobalStyle />
+        <div id="root">
+          <GlobalStyle />
 
-            <SkipToContent href="#content">Skip to Content</SkipToContent>
+          <SkipToContent href="#content">Skip to Content</SkipToContent>
 
-            {isLoading && isHome ? (
-              <Loader finishLoading={() => setIsLoading(false)} />
-            ) : (
-              <StyledContent>
-                <Nav isHome={isHome} />
-                <Social isHome={isHome} />
-                <Email isHome={isHome} />
+          {isLoading && isHome ? (
+            <Loader finishLoading={() => setIsLoading(false)} />
+          ) : (
+            <StyledContent>
+              <Nav isHome={isHome} />
+              <Social isHome={isHome} />
+              <Email isHome={isHome} />
 
-                <div id="content">
-                  {children}
-                  <Footer />
-                </div>
-              </StyledContent>
-            )}
-          </div>
-        </ThemeProvider>
+              <div id="content">
+                {children}
+                <Footer />
+              </div>
+            </StyledContent>
+          )}
+        </div>
       )}
     />
   );

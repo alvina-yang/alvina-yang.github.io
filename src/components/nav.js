@@ -146,7 +146,6 @@ const StyledListItem = styled.li`
   counter-increment: item 1;
   // Removed the :before section that added the numbers
 `;
-
 const StyledListLink = styled(Link)`
   padding: 12px 10px;
   display: flex; // This ensures the dot and the name align properly
@@ -161,6 +160,7 @@ const StyledMode = styled.div`
   transition: ${theme.transition};
   width: 50px;
   display: flex;
+  cursor: pointer;
   justify-content: center; // Center horizontally
   align-items: center; // Center vertically
 `;
@@ -249,7 +249,7 @@ class Nav extends Component {
     const timeout = isHome ? loaderDelay : 0;
     const fadeClass = isHome ? 'fade' : '';
     const fadeDownClass = isHome ? 'fadedown' : '';
-    const { themeName } = this.context; // Destructure themeName from context
+    const { themeName } = this.context;
     const iconMode = themeName === 'DarkMode' ? 'DarkMode' : 'YassifyMode';
 
     return (
@@ -308,6 +308,9 @@ class Nav extends Component {
                   ))}
                 <StyledMode onClick={this.toggleIconMode}>
                   <FormattedIcon name={iconMode} />
+                  {/* <h1>
+                    {iconMode}
+                  </h1> */}
                 </StyledMode>
               </TransitionGroup>
             </StyledList>

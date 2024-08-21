@@ -25,3 +25,5 @@ export const ThemeProvider = ({ children }) => {
 ThemeProvider.propTypes = {
   children: PropTypes.node.isRequired,
 };
+
+export default ThemeContext;
