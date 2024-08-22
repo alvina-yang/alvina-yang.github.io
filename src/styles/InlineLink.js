@@ -1,8 +1,9 @@
+import React from 'react';
+import { useTheme } from '@contexts';
 import styled from 'styled-components';
 import theme from './theme';
-const { colors } = theme;
 
-const InlineLink = styled.a`
+const StyledInlineLink = styled.a`
   display: inline-block;
   text-decoration: none;
   text-decoration-skip-ink: auto;
@@ -13,7 +14,7 @@ const InlineLink = styled.a`
   &:hover,
   &:focus,
   &:active {
-    color: ${colors.accent};
+    color: ${({ theme }) => theme.colors.accent};
     outline: 0;
     &:after {
       width: 100%;
@@ -26,9 +27,12 @@ const InlineLink = styled.a`
     height: 1px;
     position: relative;
     bottom: 0.37em;
-    background-color: ${colors.accent};
+    background-color: ${({ theme }) => theme.colors.accent};
     transition: ${theme.transition};
   }
 `;
 
-export default InlineLink;
+export default function InlineLink(props) {
+  const { colors } = useTheme();
+  return <StyledInlineLink theme={{ colors }} {...props} />;
+}

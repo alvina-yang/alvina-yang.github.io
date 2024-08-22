@@ -4,77 +4,82 @@ import sr from '@utils/sr';
 import { srConfig } from '@config';
 import styled from 'styled-components';
 import { theme, mixins, media, Section, Heading, Dot } from '@styles';
-const { colors, fontSizes, fonts } = theme;
+import { useTheme } from '@contexts';
+const { yassifyThemeColors, darkThemeColors, fontSizes, fonts } = theme;
 
-const StyledContainer = styled(Section)`
-  position: relative;
-  max-width: 800px;
-`;
-const StyledTabs = styled.div`
-  display: flex;
-  align-items: flex-start;
-  position: relative;
-  ${media.thone`
+const Education = ({ data }) => {
+  const { themeName } = useTheme();
+  const colors = themeName === 'DarkMode' ? darkThemeColors : yassifyThemeColors;
+
+  const StyledContainer = styled(Section)`
+    position: relative;
+    max-width: 800px;
+  `;
+  const StyledTabs = styled.div`
+    display: flex;
+    align-items: flex-start;
+    position: relative;
+    ${media.thone`
     display: block;
   `};
-`;
-const StyledTabList = styled.ul`
-  display: block;
-  position: relative;
-  width: max-content;
-  z-index: 3;
-  padding: 0;
-  margin: 0;
-  list-style: none;
+  `;
+  const StyledTabList = styled.ul`
+    display: block;
+    position: relative;
+    width: max-content;
+    z-index: 3;
+    padding: 0;
+    margin: 0;
+    list-style: none;
 
-  ${media.thone`
+    ${media.thone`
     display: flex;
     overflow-x: scroll;
     margin-bottom: 30px;
     width: calc(100% + 100px);
     margin-left: -50px;
   `};
-  ${media.phablet`
+    ${media.phablet`
     width: calc(100% + 50px);
     margin-left: -25px;
   `};
 
-  li {
-    &:first-of-type {
-      ${media.thone`
+    li {
+      &:first-of-type {
+        ${media.thone`
         margin-left: 50px;
       `};
-      ${media.phablet`
+        ${media.phablet`
         margin-left: 25px;
       `};
-    }
-    &:last-of-type {
-      ${media.thone`
+      }
+      &:last-of-type {
+        ${media.thone`
         padding-right: 50px;
       `};
-      ${media.phablet`
+        ${media.phablet`
         padding-right: 25px;
       `};
+      }
     }
-  }
-`;
-const StyledTabButton = styled.button`
-  ${mixins.link};
-  display: flex;
-  align-items: center;
-  width: 100%;
-  background-color: transparent;
-  height: ${theme.tabHeight}px;
-  padding: 0 20px 2px;
-  transition: ${theme.transition};
-  border-left: 2px solid ${colors.lightestBg};
-  text-align: left;
-  white-space: nowrap;
-  font-family: ${fonts.SFMono};
-  font-size: ${fontSizes.smish};
-  color: ${props => (props.isActive ? colors.accent : colors.slate)};
-  ${media.tablet`padding: 0 15px 2px;`};
-  ${media.thone`
+  `;
+  const StyledTabButton = styled.button`
+    ${mixins.link};
+    display: flex;
+    align-items: center;
+    width: 100%;
+    background-color: transparent;
+    height: ${theme.tabHeight}px;
+    padding: 0 20px 2px;
+    transition: ${theme.transition};
+    border-left: 2px solid ${colors.lightestBg};
+    text-align: left;
+    white-space: nowrap;
+    font-family: ${fonts.Description};
+    font-size: ${fontSizes.smish};
+    color: ${props => (props.isActive ? colors.accent : colors.slate)};
+    ${media.tablet`padding: 0 15px 2px;`};
+    ${media.thone`
     ${mixins.flexCenter};
     padding: 0 15px;
     text-align: center;
@@ -82,27 +87,27 @@ const StyledTabButton = styled.button`
     border-bottom: 2px solid ${colors.lightestBg};
     min-width: 120px;
   `};
-  &:hover,
-  &:focus {
-    background-color: ${colors.lightBg};
-  }
-`;
-const StyledHighlight = styled.span`
-  display: block;
-  background: ${colors.accent};
-  width: 2px;
-  height: ${theme.tabHeight}px;
-  border-radius: ${theme.borderRadius};
-  position: absolute;
-  top: 0;
-  left: 0;
-  transition: transform 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
-  transition-delay: 0.1s;
-  z-index: 10;
-  transform: translateY(
-    ${props => (props.activeTabId > 0 ? props.activeTabId * theme.tabHeight : 0)}px
-  );
-  ${media.thone`
+    &:hover,
+    &:focus {
+      background-color: ${colors.lightBg};
+    }
+  `;
+  const StyledHighlight = styled.span`
+    display: block;
+    background: ${colors.accent};
+    width: 2px;
+    height: ${theme.tabHeight}px;
+    border-radius: ${theme.borderRadius};
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: transform 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
+    transition-delay: 0.1s;
+    z-index: 10;
+    transform: translateY(
+      ${props => (props.activeTabId > 0 ? props.activeTabId * theme.tabHeight : 0)}px
+    );
+    ${media.thone`
     width: 100%;
     max-width: ${theme.tabWidth}px;
     height: 2px;
@@ -113,11 +118,11 @@ const StyledHighlight = styled.span`
     );
     margin-left: 50px;
   `};
-  ${media.phablet`
+    ${media.phablet`
     margin-left: 25px;
   `};
-`;
-const StyledTabContent = styled.div`
+  `;
+  const StyledTabContent = styled.div`
   position: relative;
   width: 100%;
   height: auto;
@@ -133,34 +138,33 @@ const StyledTabContent = styled.div`
   a {
     ${mixins.inlineLink};
   }
-> div {
-    font-family: ${fonts.SFMono};
-`;
-const StyledSchoolTitle = styled.h4`
-  color: ${colors.lightestSlate};
-  font-size: ${fontSizes.xxl};
-  font-weight: 500;
-  margin-bottom: 5px;
-`;
-const StyledProgram = styled.h6`
-  color: ${colors.accent};
-  font-size: ${fontSizes.lg};
-  font-weight: 400;
-  margin-bottom: 5px;
-`;
-const StyledJobDetails = styled.h5`
-  font-family: ${fonts.SFMono};
-  font-size: ${fontSizes.smish};
-  font-weight: normal;
-  letter-spacing: 0.05em;
-  color: ${colors.lightestSlate};
-  margin-bottom: 30px;
-  svg {
-    width: 15px;
-  }
-`;
+  > div {
+    font-family: ${fonts.Description};
+  `;
+  const StyledSchoolTitle = styled.h4`
+    color: ${colors.lightestSlate};
+    font-size: ${fontSizes.xxl};
+    font-weight: 500;
+    margin-bottom: 5px;
+  `;
+  const StyledProgram = styled.h6`
+    color: ${colors.accent};
+    font-size: ${fontSizes.lg};
+    font-weight: 400;
+    margin-bottom: 5px;
+  `;
+  const StyledJobDetails = styled.h5`
+    font-family: ${fonts.Description};
+    font-size: ${fontSizes.smish};
+    font-weight: normal;
+    letter-spacing: 0.05em;
+    color: ${colors.lightestSlate};
+    margin-bottom: 30px;
+    svg {
+      width: 15px;
+    }
+  `;
 
-const Education = ({ data }) => {
   const [activeTabId, setActiveTabId] = useState(0);
   const [tabFocus, setTabFocus] = useState(null);
   const tabs = useRef([]);
@@ -259,6 +263,8 @@ const Education = ({ data }) => {
 
 Education.propTypes = {
   data: PropTypes.array.isRequired,
+  activeTabId: PropTypes.number.isRequired,
+  isActive: PropTypes.bool.isRequired,
 };
 
 export default Education;

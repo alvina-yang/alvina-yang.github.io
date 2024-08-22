@@ -1,5 +1,6 @@
 import React, { useRef, useEffect, useState } from 'react';
 import styled from 'styled-components';
+import { useTheme } from '@contexts';
 
 const Canvas = styled.canvas`
   width: 50%; // Set a specific width for the canvas
@@ -7,6 +8,7 @@ const Canvas = styled.canvas`
 `;
 
 const FractalTree = () => {
+  const { colors } = useTheme();
   const canvasRef = useRef(null);
   const [angle, setAngle] = useState(0.45);
   const maxAngle = 1.7; // Allow wider angles
@@ -63,7 +65,7 @@ const FractalTree = () => {
       ctx.clearRect(0, 0, canvasWidth, canvasHeight);
       ctx.save();
       ctx.translate(canvasWidth / 2, canvasHeight);
-      ctx.strokeStyle = '#FFFFFF';
+      ctx.strokeStyle = colors.white;
       ctx.lineWidth = 3;
       drawBranch(initialBranchLength, angle, 0);
       ctx.restore();

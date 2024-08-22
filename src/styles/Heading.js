@@ -1,9 +1,11 @@
+import React from 'react';
 import styled from 'styled-components';
 import theme from './theme';
 import media from './media';
-const { colors, fontSizes } = theme;
+import { useTheme } from '@contexts';
+const { fontSizes } = theme;
 
-const Heading = styled.h3`
+const ThemedHeading = styled.h3`
   position: relative;
   display: flex;
   align-items: center;
@@ -14,7 +16,7 @@ const Heading = styled.h3`
   ${media.tablet`font-size: 24px;`};
 
   &:hover {
-    color: ${colors.accent}; // Change text color to green on hover
+    color: ${({ theme }) => theme.colors.accent};
   }
 
   &:after {
@@ -22,7 +24,7 @@ const Heading = styled.h3`
     display: block;
     height: 1px;
     width: 300px;
-    background-color: ${colors.lightestBg};
+    background-color: ${({ theme }) => theme.colors.lightestBg};
     position: relative;
     top: -5px;
     margin-left: 20px;
@@ -32,4 +34,7 @@ const Heading = styled.h3`
   }
 `;
 
-export default Heading;
+export default function Heading(props) {
+  const { colors } = useTheme();
+  return <ThemedHeading theme={{ colors }} {...props} />;
+}

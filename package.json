@@ -1,11 +1,11 @@
 {
-  "name": "v1",
-  "description": "Personal Website V1",
+  "name": "alvinayang",
+  "description": "Alvina's Personal Portfolio",
   "version": "1.0.0",
-  "author": "Yashita Namdeo <yashita.namdeo2000@gmail.com>",
+  "author": "Alvina Yang <alvina.yang@mail.utoronto.ca>",
   "repository": {
     "type": "git",
-    "url": "https://github.com/yashitanamdeo/yashitanamdeo.github.io"
+    "url": "https://github.com/alvina-yang/simple-portfolio"
   },
   "keywords": [
     "gatsby"

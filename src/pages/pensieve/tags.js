@@ -24,7 +24,7 @@ const StyledTagsContainer = styled(Main)`
         color: ${colors.lightSlate};
         .count {
           color: ${colors.slate};
-          font-family: ${fonts.SFMono};
+          font-family: ${fonts.Description};
           font-size: ${fontSizes.md};
         }
       }

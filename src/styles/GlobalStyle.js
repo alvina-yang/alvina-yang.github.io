@@ -1,13 +1,15 @@
+import React from 'react';
 import { createGlobalStyle } from 'styled-components';
+import { useTheme } from '@contexts';
 import theme from './theme';
 import media from './media';
 import mixins from './mixins';
 import FontFaces from './fonts';
 import TransitionStyles from './TransitionStyles';
 import PrismStyles from './PrismStyles';
-const { colors, fontSizes, fonts } = theme;
+const { fontSizes, fonts } = theme;
 
-const GlobalStyle = createGlobalStyle`
+const ThemedGlobalStyle = createGlobalStyle`
   ${FontFaces};
 
   html {
@@ -28,10 +30,10 @@ const GlobalStyle = createGlobalStyle`
     overflow-x: hidden;
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
-    background-color: ${colors.bg};
-    color: ${colors.slate};
+    background-color: ${({ theme }) => theme.colors.bg};
+    color: ${({ theme }) => theme.colors.slate};
     line-height: 1.3;
-    font-family: ${fonts.Calibre};
+    font-family: ${fonts.Title};
     font-size: ${fontSizes.xl};
     ${media.phablet`font-size: ${fontSizes.lg};`}
 
@@ -50,8 +52,8 @@ const GlobalStyle = createGlobalStyle`
   }
 
   ::selection {
-    background-color: ${colors.slate};
-    color: ${colors.lightestSlate};
+    background-color: ${({ theme }) => theme.colors.slate};
+    color: ${({ theme }) => theme.colors.lightestSlate};
   }
 
   #root {
@@ -68,7 +70,7 @@ const GlobalStyle = createGlobalStyle`
   h5,
   h6 {
     font-weight: 600;
-    color: ${colors.lightestSlate};
+    color: ${({ theme }) => theme.colors.lightestSlate};
     margin: 0 0 10px 0;
   }
 
@@ -121,7 +123,7 @@ const GlobalStyle = createGlobalStyle`
 
     &:hover,
     &:focus {
-      color: ${colors.accent};
+      color: ${({ theme }) => theme.colors.accent};
     }
   }
 
@@ -129,11 +131,6 @@ const GlobalStyle = createGlobalStyle`
     cursor: pointer;
     border: 0;
     border-radius: 0;
-
-    &:focus,
-    &:active {
-      outline-color: ${colors.lightblue};
-    }
   }
 
   input, textarea {
@@ -161,8 +158,8 @@ const GlobalStyle = createGlobalStyle`
     }
 
     & > code {
-      background-color: ${colors.lightBg};
-      color: ${colors.white};
+      background-color: ${({ theme }) => theme.colors.lightBg};
+      color: ${({ theme }) => theme.colors.white};
       font-size: ${fontSizes.sm};
       border-radius: ${theme.borderRadius};
       padding: 0.3em 0.5em;
@@ -183,14 +180,14 @@ const GlobalStyle = createGlobalStyle`
           content: '▹';
           position: absolute;
           left: 0;
-          color: ${colors.accent};
+          color: ${({ theme }) => theme.colors.accent};
         }
       }
     }
   }
 
   blockquote {
-    border-left-color: ${colors.accent};
+    border-left-color: ${({ theme }) => theme.colors.accent};
     border-left-style: solid;
     border-left-width: 1px;
     margin-left: 0px;
@@ -204,7 +201,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   hr {
-    background-color: ${colors.lightestBg};
+    background-color: ${({ theme }) => theme.colors.lightestBg};
     height: 1px;
     border-width: 0px;
     border-style: initial;
@@ -214,26 +211,26 @@ const GlobalStyle = createGlobalStyle`
   }
 
   code {
-    font-family: ${fonts.SFMono};
+    font-family: ${fonts.Description};
     font-size: ${fontSizes.md};
   }
 
   #logo {
-    color: ${colors.accent};
+    color: ${({ theme }) => theme.colors.accent};
   }
 
   .overline {
-    color: ${colors.accent};
-    font-family: ${fonts.SFMono};
+    color: ${({ theme }) => theme.colors.accent};
+    font-family: ${fonts.Description};
     font-size: ${fontSizes.md};
     font-weight: normal;
   }
 
   .subtitle {
-    color: ${colors.accent};
+    color: ${({ theme }) => theme.colors.accent};
     margin: 0 0 20px 0;
     font-size: ${fontSizes.md};
-    font-family: ${fonts.SFMono};
+    font-family: ${fonts.Description};
     font-weight: normal;
     line-height: 1.5;
     ${media.desktop`font-size: ${fontSizes.sm};`};
@@ -249,7 +246,7 @@ const GlobalStyle = createGlobalStyle`
     display: flex;
     align-items: center;
     margin-bottom: 50px;
-    color: ${colors.accent};
+    color: ${({ theme }) => theme.colors.accent};
 
     .arrow {
       display: block;
@@ -258,7 +255,7 @@ const GlobalStyle = createGlobalStyle`
     }
     a {
       ${mixins.inlineLink};
-      font-family: ${fonts.SFMono};
+      font-family: ${fonts.Description};
       font-size: ${fontSizes.sm};
       font-weight: bold;
       line-height: 1.5;
@@ -276,4 +273,7 @@ const GlobalStyle = createGlobalStyle`
   ${PrismStyles};
 `;
 
-export default GlobalStyle;
+export default function GlobalStyle(props) {
+  const { colors } = useTheme();
+  return <ThemedGlobalStyle theme={{ colors }} {...props} />;
+}

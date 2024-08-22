@@ -4,52 +4,54 @@ import PropTypes from 'prop-types';
 import { Loader, Nav, Social, Email, Footer } from '@components';
 import styled from 'styled-components';
 import { GlobalStyle, theme } from '@styles';
-
-const { colors, fontSizes, fonts } = theme;
+import { useTheme } from '@contexts';
+const { yassifyThemeColors, darkThemeColors, fontSizes, fonts } = theme;
 
 if (typeof window !== 'undefined') {
   // eslint-disable-next-line global-require
   require('smooth-scroll')('a[href*="#"]');
 }
 
-const SkipToContent = styled.a`
-  position: absolute;
-  top: auto;
-  left: -999px;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  z-index: -99;
-  &:focus,
-  &:active {
-    outline: 0;
-    color: ${colors.accent};
-    background-color: ${colors.lightBg};
-    border-radius: ${theme.borderRadius};
-    padding: 18px 23px;
-    font-size: ${fontSizes.sm};
-    font-family: ${fonts.SFMono};
-    line-height: 1;
-    text-decoration: none;
-    cursor: pointer;
-    transition: ${theme.transition};
-    top: 0;
-    left: 0;
-    width: auto;
-    height: auto;
-    overflow: auto;
-    z-index: 99;
-  }
-`;
-const StyledContent = styled.div`
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-`;
-
 const Layout = ({ children, location }) => {
-  const isHome = location.pathname === '/';
+  const isHome = location.pathname === '/hihi';
   const [isLoading, setIsLoading] = useState(isHome);
+  const { themeName } = useTheme();
+  const colors = themeName === 'DarkMode' ? darkThemeColors : yassifyThemeColors;
+
+  const SkipToContent = styled.a`
+    position: absolute;
+    top: auto;
+    left: -999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    z-index: -99;
+    &:focus,
+    &:active {
+      outline: 0;
+      color: ${colors.accent};
+      background-color: ${colors.lightBg};
+      border-radius: ${theme.borderRadius};
+      padding: 18px 23px;
+      font-size: ${fontSizes.sm};
+      font-family: ${fonts.Description};
+      line-height: 1;
+      text-decoration: none;
+      cursor: pointer;
+      transition: ${theme.transition};
+      top: 0;
+      left: 0;
+      width: auto;
+      height: auto;
+      overflow: auto;
+      z-index: 99;
+    }
+  `;
+  const StyledContent = styled.div`
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  `;
 
   useEffect(() => {
     if (isLoading) {

@@ -4,56 +4,59 @@ import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import styled from 'styled-components';
 import { theme, mixins, media, Section, FractalTreeContainer } from '@styles';
 import { FractalTree } from '@components';
-const { colors, fontSizes, fonts, navDelay, loaderDelay } = theme;
-
-const StyledContainer = styled(Section)`
-  ${mixins.flexCenter};
-  flex-direction: column;
-  align-items: flex-start;
-  min-height: 100vh;
-  ${media.tablet`padding-top: 150px;`};
-  div {
-    width: 100%;
-  }
-`;
-const StyledOverline = styled.h1`
-  color: ${colors.accent};
-  margin: 0 0 20px 3px;
-  font-size: ${fontSizes.md};
-  font-family: ${fonts.SFMono};
-  font-weight: normal;
-  ${media.desktop`font-size: ${fontSizes.sm};`};
-  ${media.tablet`font-size: ${fontSizes.smish};`};
-`;
-const StyledTitle = styled.h2`
-  font-size: 80px;
-  line-height: 1.1;
-  margin: 0;
-  ${media.desktop`font-size: 70px;`};
-  ${media.tablet`font-size: 60px;`};
-  ${media.phablet`font-size: 50px;`};
-  ${media.phone`font-size: 40px;`};
-`;
-const StyledSubtitle = styled.h3`
-  font-size: 80px;
-  line-height: 1.1;
-  color: ${colors.slate};
-  ${media.desktop`font-size: 70px;`};
-  ${media.tablet`font-size: 60px;`};
-  ${media.phablet`font-size: 50px;`};
-  ${media.phone`font-size: 40px;`};
-`;
-const StyledDescription = styled.div`
-  margin-top: 25px;
-  margin-bottom: 5px;
-  width: 50%;
-  max-width: 500px;
-  a {
-    ${mixins.inlineLink};
-  }
-`;
+import { useTheme } from '@contexts';
+const { yassifyThemeColors, darkThemeColors, fontSizes, fonts, navDelay, loaderDelay } = theme;
 
 const Hero = ({ data }) => {
+  const { themeName } = useTheme();
+  const colors = themeName === 'DarkMode' ? darkThemeColors : yassifyThemeColors;
+
+  const StyledContainer = styled(Section)`
+    ${mixins.flexCenter};
+    flex-direction: column;
+    align-items: flex-start;
+    min-height: 100vh;
+    ${media.tablet`padding-top: 150px;`};
+    div {
+      width: 100%;
+    }
+  `;
+  const StyledOverline = styled.h1`
+    color: ${colors.accent};
+    margin: 0 0 20px 3px;
+    font-size: ${fontSizes.md};
+    font-family: ${fonts.Description};
+    font-weight: normal;
+    ${media.desktop`font-size: ${fontSizes.sm};`};
+    ${media.tablet`font-size: ${fontSizes.smish};`};
+  `;
+  const StyledTitle = styled.h2`
+    font-size: 80px;
+    line-height: 1.1;
+    margin: 0;
+    ${media.desktop`font-size: 70px;`};
+    ${media.tablet`font-size: 60px;`};
+    ${media.phablet`font-size: 50px;`};
+    ${media.phone`font-size: 40px;`};
+  `;
+  const StyledSubtitle = styled.h3`
+    font-size: 80px;
+    line-height: 1.1;
+    color: ${colors.slate};
+    ${media.desktop`font-size: 70px;`};
+    ${media.tablet`font-size: 60px;`};
+    ${media.phablet`font-size: 50px;`};
+    ${media.phone`font-size: 40px;`};
+  `;
+  const StyledDescription = styled.div`
+    margin-top: 25px;
+    margin-bottom: 5px;
+    width: 50%;
+    max-width: 500px;
+    a {
+      ${mixins.inlineLink};
+    }
+  `;
   const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {

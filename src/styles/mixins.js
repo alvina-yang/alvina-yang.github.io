@@ -1,7 +1,7 @@
 import { css } from 'styled-components';
 import theme from './theme';
 import media from './media';
-const { colors, fontSizes, fonts } = theme;
+const { fontSizes, fonts } = theme;
 
 const mixins = {
   flexCenter: css`
@@ -20,7 +20,7 @@ const mixins = {
     outline: 1px solid red;
   `,
 
-  link: css`
+  link: colors => css`
     display: inline-block;
     text-decoration: none;
     text-decoration-skip-ink: auto;
@@ -36,7 +36,7 @@ const mixins = {
     }
   `,
 
-  inlineLink: css`
+  inlineLink: colors => css`
     display: inline-block;
     text-decoration: none;
     text-decoration-skip-ink: auto;
@@ -70,14 +70,14 @@ const mixins = {
     }
   `,
 
-  smallButton: css`
+  smallButton: colors => css`
     color: ${colors.accent};
     background-color: transparent;
     border: 1px solid ${colors.accent};
     border-radius: ${theme.borderRadius};
     padding: 0.75rem 1rem;
     font-size: ${fontSizes.smish};
-    font-family: ${fonts.SFMono};
+    font-family: ${fonts.Description};
     line-height: 1;
     text-decoration: none;
     cursor: pointer;
@@ -85,14 +85,14 @@ const mixins = {
     &:hover,
     &:focus,
     &:active {
-      background-color: ${colors.transGreen};
+      background-color: ${colors.transAccent};
     }
     &:after {
       display: none !important;
     }
   `,
 
-  bigButton: css`
+  bigButton: colors => css`
     color: ${colors.accent};
     background-color: transparent;
     border: 1.5px solid ${colors.accent};
@@ -100,7 +100,7 @@ const mixins = {
     padding: 1.15rem 1.75rem;
     font-size: ${fontSizes.xl};
     font-weight: 600;
-    font-family: ${fonts.Calibre};
+    font-family: ${fonts.Title};
     line-height: 1;
     text-decoration: none;
     cursor: pointer;
@@ -108,7 +108,7 @@ const mixins = {
     &:hover,
     &:focus,
     &:active {
-      background-color: ${colors.transGreen};
+      background-color: ${colors.transAccent};
     }
     &:after {
       display: none !important;
@@ -122,7 +122,7 @@ const mixins = {
     ${media.phablet`padding: 0 25px;`};
   `,
 
-  boxShadow: css`
+  boxShadow: colors => css`
     box-shadow: 0 10px 30px -15px ${colors.shadowbg};
     transition: ${theme.transition};
 
@@ -132,7 +132,7 @@ const mixins = {
     }
   `,
 
-  fancyList: css`
+  fancyList: colors => css`
     padding: 0;
     margin: 0;
     list-style: none;

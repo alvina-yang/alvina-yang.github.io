@@ -3,8 +3,62 @@ import { hex2rgba } from '@utils';
 const ACCENT = '#8FFF5A';
 const DARK_BG = '#101010';
 const BG = '#161616';
+const ACCENT_DARK = '#8FFF5A';
+const ACCENT_YASSIFY = '#3F007D';
+const LIGHT_BG_DARK = '#1f1f1f';
+const LIGHT_BG_YASSIFY = '#FAEEF3';
+
+const darkThemeColors = {
+  darkBg: DARK_BG,
+  bg: BG,
+  lightBg: LIGHT_BG_DARK,
+  lightestBg: '#343434',
+  slate: '#B2BBD3',
+  lightSlate: '#D0D5E1',
+  lightestSlate: '#E7F0F7',
+  white: '#EDFAFF',
+  accent: ACCENT,
+  transAccent: hex2rgba(ACCENT_DARK, 0.07),
+  transWhite: hex2rgba('#EDFAFF', 0.9),
+  transLightBg: hex2rgba(LIGHT_BG_DARK, 0.9),
+  transLightestBg: hex2rgba('#343434', 0.9),
+  shadowbg: hex2rgba(DARK_BG, 0.7),
+  transbg: hex2rgba(LIGHT_BG_DARK, 0.95),
+};
+
+const yassifyThemeColors = {
+  darkBg: '#FFFAFC',
+  bg: '#FFFAFC',
+  lightBg: '#FAEEF3',
+  lightestBg: '#6B004D',
+  slate: '#BB5573',
+  lightSlate: '#CE4A91',
+  lightestSlate: '#9C1C61',
+  white: '#230013',
+  accent: ACCENT_YASSIFY,
+  transAccent: hex2rgba(ACCENT_YASSIFY, 0.07),
+  transWhite: hex2rgba('#ffffff', 0.9),
+  transLightBg: hex2rgba(LIGHT_BG_YASSIFY, 0.9),
+  transLightestBg: hex2rgba('#f4f4f4', 0.9),
+  shadowbg: hex2rgba('#282828', 0.7),
+  transbg: hex2rgba(LIGHT_BG_YASSIFY, 0.95),
+};
+
+const darkThemeFonts = {
+  Title: 'Poppins, sans-serif',
+  Description: 'Source Code Pro, monospace',
+};
+
+const yassifyThemeFonts = {
+  Title: 'Roboto, sans-serif', // Example Yassify font for Title
+  Description: 'Courier New, monospace', // Example Yassify font for Description
+};
 
 const theme = {
+  darkThemeColors,
+  yassifyThemeColors,
+  darkThemeFonts,
+  yassifyThemeFonts,
   colors: {
     darkBg: DARK_BG,
     bg: BG,
@@ -15,7 +69,7 @@ const theme = {
     lightestSlate: '#E7F0F7',
     white: '#EDFAFF',
     accent: ACCENT,
-    transGreen: hex2rgba(ACCENT, 0.07),
+    transAccent: hex2rgba(ACCENT, 0.07),
     transWhite: hex2rgba('#EDFAFF', 0.9),
     transLightBg: hex2rgba('#1f1f1f', 0.9),
     transLightestBg: hex2rgba('#343434', 0.9),
@@ -24,8 +78,8 @@ const theme = {
   },
 
   fonts: {
-    Calibre: 'Poppins, sans-serif',
-    SFMono: 'Source Code Pro, monospace',
+    Title: 'Poppins, sans-serif',
+    Description: 'Source Code Pro, monospace',
   },
 
   fontSizes: {
