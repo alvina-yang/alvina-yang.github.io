@@ -8,6 +8,7 @@ import styled from 'styled-components';
 import { theme, mixins, media, Section, Heading, Dot } from '@styles';
 import { useTheme } from '@contexts';
 const { yassifyThemeColors, darkThemeColors, fontSizes, fonts } = theme;
+///
 
 const About = ({ data, technologiesData }) => {
   const { themeName } = useTheme();
