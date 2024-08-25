@@ -61,7 +61,6 @@ const Featured = ({ data }) => {
     }
   `;
   const StyledDescription = styled.div`
-    ${mixins.boxShadow};
     position: relative;
     z-index: 2;
     padding: 25px;
@@ -144,7 +143,6 @@ const Featured = ({ data }) => {
   `;
 
   const StyledImgContainer = styled.a`
-    ${mixins.boxShadow};
     grid-column: 6 / -1;
     grid-row: 1 / -1;
     position: relative;

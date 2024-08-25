@@ -57,7 +57,6 @@ const About = ({ data, technologiesData }) => {
   `;
 
   const StyledAvatarLink = styled.a`
-    ${mixins.boxShadow};
     width: 100%;
     position: relative;
     border-radius: ${theme.borderRadius};
