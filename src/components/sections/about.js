@@ -7,12 +7,12 @@ import { srConfig, github } from '@config';
 import styled from 'styled-components';
 import { theme, mixins, media, Section, Heading, Dot } from '@styles';
 import { useTheme } from '@contexts';
-const { yassifyThemeColors, darkThemeColors, fontSizes, fonts } = theme;
+const { yassifyThemeColors, darkThemeColors, fontSizes, yassifyThemeFonts, darkThemeFonts, fonts } = theme;
 
 const About = ({ data, technologiesData }) => {
   const { themeName } = useTheme();
   const colors = themeName === 'DarkMode' ? darkThemeColors : yassifyThemeColors;
-
+  // const fonts = themeName === 'DarkMode' ? darkThemeFonts : yassifyThemeFonts;
   const StyledContainer = styled(Section)`
     position: relative;
   `;
@@ -73,43 +73,40 @@ const About = ({ data, technologiesData }) => {
   `;
 
   const TechnologyItem = styled.div`
-    flex: 1;
-    min-width: 200px;
-    margin-right: 20px;
-    margin-bottom: 20px;
+  flex: 1;
+  min-width: 200px;
+  margin-right: 20px;
+  margin-bottom: 20px;
 
-    h4 {
+  h4 {
+    color: ${colors.accent};
+  }
+
+  ul {
+    display: grid; // Using grid layout
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); // Create columns that fit content
+    gap: 5%; // Space between items
+    list-style: none;
+    padding: 0;
+    margin-top: 10px;
+  }
+
+  div {
+    font-family: ${fonts.Description};
+    font-size: ${fontSizes.smish};
+  }
+
+  li {
+    font-family: ${fonts.Description};
+    font-size: ${fontSizes.smish};
+    color: ${colors.accent};
+    &:before {
+      content: '▹';
       color: ${colors.accent};
+      margin-right: 10px;
     }
-
-    ul {
-      display: grid; // Using grid layout
-      grid-template-columns: repeat(
-        auto-fill,
-        minmax(120px, 1fr)
-      ); // Create columns that fit content
-      gap: 5%; // Space between items
-      list-style: none;
-      padding: 0;
-      margin-top: 10px;
-    }
-
-    div {
-      font-family: ${fonts.Description};
-      font-size: ${fontSizes.smish};
-    }
-
-    li {
-      font-family: ${fonts.Description};
-      font-size: ${fontSizes.smish};
-      color: ${colors.accent};
-      &:before {
-        content: '▹';
-        color: ${colors.accent};
-        margin-right: 10px;
-      }
-    }
-  `;
+  }
+`;
 
   const { frontmatter, html } = data[0].node;
   const { title, avatar } = frontmatter;
