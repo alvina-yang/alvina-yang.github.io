@@ -4,7 +4,7 @@ const ACCENT = '#8FFF5A';
 const DARK_BG = '#101010';
 const BG = '#161616';
 const ACCENT_DARK = '#8FFF5A';
-const ACCENT_YASSIFY = '#3F007D';
+const ACCENT_YASSIFY = '#5700AF';
 const LIGHT_BG_DARK = '#1f1f1f';
 const LIGHT_BG_YASSIFY = '#FAEEF3';
 
@@ -34,7 +34,7 @@ const yassifyThemeColors = {
   slate: '#BB5573',
   lightSlate: '#CE4A91',
   lightestSlate: '#9C1C61',
-  white: '#230013',
+  white: '#FF007A',
   accent: ACCENT_YASSIFY,
   transAccent: hex2rgba(ACCENT_YASSIFY, 0.07),
   transWhite: hex2rgba('#ffffff', 0.9),

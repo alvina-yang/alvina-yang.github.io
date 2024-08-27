@@ -83,7 +83,7 @@ const Featured = ({ data }) => {
       max-width: 70vw;
     }
     a {
-      ${mixins.inlineLink};
+      ${mixins.inlineLink(colors)};
     }
   `;
   const StyledTechList = styled.ul`

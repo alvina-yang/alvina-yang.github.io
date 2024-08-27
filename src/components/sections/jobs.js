@@ -137,7 +137,7 @@ const Jobs = ({ data }) => {
       font-size: ${fontSizes.sm};
     }
     a {
-      ${mixins.inlineLink};
+      ${mixins.inlineLink(colors)};
     }
 
     > div {

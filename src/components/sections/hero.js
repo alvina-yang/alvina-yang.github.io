@@ -54,7 +54,7 @@ const Hero = ({ data }) => {
     width: 50%;
     max-width: 500px;
     a {
-      ${mixins.inlineLink};
+      ${mixins.inlineLink(colors)};
     }
   `;
   const [isMounted, setIsMounted] = useState(false);

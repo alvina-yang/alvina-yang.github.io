@@ -120,7 +120,7 @@ const Projects = ({ data }) => {
     font-size: ${fontSizes.sm};
     color: ${colors.lightSlate};
     a {
-      ${mixins.inlineLink};
+      ${mixins.inlineLink(colors)};
     }
   `;
   const StyledTechList = styled.ul`

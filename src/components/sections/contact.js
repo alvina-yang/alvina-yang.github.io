@@ -22,7 +22,7 @@ const Contact = ({ data }) => {
     max-width: 600px;
     margin: 0 auto 100px;
     a {
-      ${mixins.inlineLink};
+      ${mixins.inlineLink(colors)};
     }
     div {
       font-family: ${fonts.Description};

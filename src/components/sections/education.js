@@ -136,7 +136,7 @@ const Education = ({ data }) => {
     font-size: ${fontSizes.sm};
   }
   a {
-    ${mixins.inlineLink};
+    ${mixins.inlineLink(colors)};
   }
   > div {
     font-family: ${fonts.Description};

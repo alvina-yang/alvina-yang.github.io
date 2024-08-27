@@ -9,6 +9,7 @@ const StyledInlineLink = styled.a`
   text-decoration-skip-ink: auto;
   position: relative;
   transition: ${theme.transition};
+  color: ${({ theme }) => theme.colors.accent};
   cursor: pointer;
 
   &:hover,

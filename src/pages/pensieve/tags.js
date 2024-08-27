@@ -20,7 +20,7 @@ const StyledTagsContainer = styled(Main)`
       font-size: ${fontSizes.xxl};
 
       a {
-        ${mixins.inlineLink};
+        ${mixins.inlineLink(colors)};
         color: ${colors.lightSlate};
         .count {
           color: ${colors.slate};

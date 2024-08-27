@@ -41,13 +41,12 @@ const mixins = {
     text-decoration: none;
     text-decoration-skip-ink: auto;
     position: relative;
+    color: ${colors.accent};
     transition: ${theme.transition};
     cursor: pointer;
-    color: ${colors.accent};
     &:hover,
     &:focus,
     &:active {
-      color: ${colors.accent};
       outline: 0;
       &:after {
         width: 100%;
@@ -56,17 +55,6 @@ const mixins = {
         color: ${colors.accent} !important;
         transition: ${theme.transition};
       }
-    }
-    &:after {
-      content: '';
-      display: block;
-      width: 0;
-      height: 2px;
-      position: relative;
-      bottom: 0.17em;
-      background-color: ${colors.accent};
-      transition: ${theme.transition};
-      opacity: 0.8;
     }
   `,
 

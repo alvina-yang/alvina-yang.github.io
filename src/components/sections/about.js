@@ -31,8 +31,8 @@ const About = ({ data, technologiesData }) => {
     font-size: ${fontSizes.md};
     ${media.tablet`width: 100%;`};
     a {
-      ${mixins.inlineLink};
-    }
+        ${mixins.inlineLink(colors)};
+      }
   `;
   const StyledPic = styled.div`
     position: relative;
@@ -60,7 +60,6 @@ const About = ({ data, technologiesData }) => {
     width: 100%;
     position: relative;
     border-radius: ${theme.borderRadius};
-    background-color: ${colors.lightestSlate};
     margin-left: -20px;
     &:hover ${StyledAvatar}, &:focus ${StyledAvatar} {
       filter: none; // Remove filter on hover/focus, showing the image in full color
@@ -74,40 +73,43 @@ const About = ({ data, technologiesData }) => {
   `;
 
   const TechnologyItem = styled.div`
-  flex: 1;
-  min-width: 200px;
-  margin-right: 20px;
-  margin-bottom: 20px;
+    flex: 1;
+    min-width: 200px;
+    margin-right: 20px;
+    margin-bottom: 20px;
 
-  h4 {
-    color: ${colors.accent};
-  }
-
-  ul {
-    display: grid; // Using grid layout
-    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); // Create columns that fit content
-    gap: 5%; // Space between items
-    list-style: none;
-    padding: 0;
-    margin-top: 10px;
-  }
-
-  div {
-    font-family: ${fonts.Description};
-    font-size: ${fontSizes.smish};
-  }
-
-  li {
-    font-family: ${fonts.Description};
-    font-size: ${fontSizes.smish};
-    color: ${colors.accent};
-    &:before {
-      content: '▹';
+    h4 {
       color: ${colors.accent};
-      margin-right: 10px;
     }
-  }
-`;
+
+    ul {
+      display: grid; // Using grid layout
+      grid-template-columns: repeat(
+        auto-fill,
+        minmax(120px, 1fr)
+      ); // Create columns that fit content
+      gap: 5%; // Space between items
+      list-style: none;
+      padding: 0;
+      margin-top: 10px;
+    }
+
+    div {
+      font-family: ${fonts.Description};
+      font-size: ${fontSizes.smish};
+    }
+
+    li {
+      font-family: ${fonts.Description};
+      font-size: ${fontSizes.smish};
+      color: ${colors.accent};
+      &:before {
+        content: '▹';
+        color: ${colors.accent};
+        margin-right: 10px;
+      }
+    }
+  `;
 
   const { frontmatter, html } = data[0].node;
   const { title, avatar } = frontmatter;
