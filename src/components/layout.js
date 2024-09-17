@@ -5,7 +5,7 @@ import { Loader, Nav, Social, Email, Footer } from '@components';
 import styled from 'styled-components';
 import { GlobalStyle, theme } from '@styles';
 import { useTheme } from '@contexts';
-const { yassifyThemeColors, darkThemeColors, fontSizes, fonts } = theme;
+const { yassifyThemeColors, darkThemeColors, fontSizes, yassifyThemeFonts, darkThemeFonts } = theme;
 
 if (typeof window !== 'undefined') {
   // eslint-disable-next-line global-require
@@ -17,6 +17,7 @@ const Layout = ({ children, location }) => {
   const [isLoading, setIsLoading] = useState(isHome);
   const { themeName } = useTheme();
   const colors = themeName === 'DarkMode' ? darkThemeColors : yassifyThemeColors;
+  const fonts = themeName === 'DarkMode' ? darkThemeFonts : yassifyThemeFonts;
 
   const SkipToContent = styled.a`
     position: absolute;

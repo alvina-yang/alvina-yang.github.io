@@ -5,11 +5,12 @@ import { socialMedia } from '@config';
 import styled from 'styled-components';
 import { useTheme } from '@contexts';
 import { theme, mixins, media } from '@styles';
-const { yassifyThemeColors, darkThemeColors, fontSizes, fonts } = theme;
+const { yassifyThemeColors, darkThemeColors, fontSizes, yassifyThemeFonts, darkThemeFonts } = theme;
 
 const Footer = () => {
   const { themeName } = useTheme();
   const colors = themeName === 'DarkMode' ? darkThemeColors : yassifyThemeColors;
+  const fonts = themeName === 'DarkMode' ? darkThemeFonts : yassifyThemeFonts;
 
   const [githubInfo] = useState({
     stars: null,

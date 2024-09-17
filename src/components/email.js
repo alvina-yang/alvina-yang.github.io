@@ -5,11 +5,12 @@ import { Side } from '@components';
 import styled from 'styled-components';
 import { theme } from '@styles';
 import { useTheme } from '@contexts';
-const { yassifyThemeColors, darkThemeColors, fontSizes, fonts } = theme;
+const { yassifyThemeColors, darkThemeColors, fontSizes, yassifyThemeFonts, darkThemeFonts } = theme;
 
 const Email = ({ isHome }) => {
   const { themeName } = useTheme();
   const colors = themeName === 'DarkMode' ? darkThemeColors : yassifyThemeColors;
+  const fonts = themeName === 'DarkMode' ? darkThemeFonts : yassifyThemeFonts;
 
   const StyledLinkWrapper = styled.div`
     display: flex;

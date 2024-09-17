@@ -7,7 +7,7 @@ import { FormattedIcon } from '@components/icons';
 import styled from 'styled-components';
 import { theme, mixins, media, Section } from '@styles';
 import { useTheme } from '@contexts';
-const { yassifyThemeColors, darkThemeColors, fontSizes, fonts } = theme;
+const { yassifyThemeColors, darkThemeColors, fontSizes, yassifyThemeFonts, darkThemeFonts } = theme;
 
 const Projects = ({ data }) => {
   const revealTitle = useRef(null);
@@ -15,6 +15,7 @@ const Projects = ({ data }) => {
   const revealProjects = useRef([]);
   const { themeName } = useTheme();
   const colors = themeName === 'DarkMode' ? darkThemeColors : yassifyThemeColors;
+  const fonts = themeName === 'DarkMode' ? darkThemeFonts : yassifyThemeFonts;
 
   useEffect(() => {
     sr.reveal(revealTitle.current, srConfig());

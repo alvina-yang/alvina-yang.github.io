@@ -5,7 +5,7 @@ import { srConfig, email } from '@config';
 import { useTheme } from '@contexts';
 import styled from 'styled-components';
 import { theme, mixins, media, Section, Heading, Dot } from '@styles';
-const { yassifyThemeColors, darkThemeColors, fontSizes, fonts } = theme;
+const { yassifyThemeColors, darkThemeColors, fontSizes, yassifyThemeFonts, darkThemeFonts } = theme;
 
 const Contact = ({ data }) => {
   const { frontmatter, html } = data[0].node;
@@ -14,7 +14,7 @@ const Contact = ({ data }) => {
 
   const { themeName } = useTheme();
   const colors = themeName === 'DarkMode' ? darkThemeColors : yassifyThemeColors;
-
+  const fonts = themeName === 'DarkMode' ? darkThemeFonts : yassifyThemeFonts;
   useEffect(() => sr.reveal(revealContainer.current, srConfig()), []);
 
   const StyledContainer = styled(Section)`

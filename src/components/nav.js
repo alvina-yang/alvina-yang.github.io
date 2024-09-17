@@ -10,7 +10,14 @@ import ThemeContext from '@contexts';
 import { IconLogo, FormattedIcon } from '@components/icons';
 import styled from 'styled-components';
 import { theme, mixins, media, Dot } from '@styles';
-const { yassifyThemeColors, darkThemeColors, fontSizes, fonts, loaderDelay } = theme;
+const {
+  yassifyThemeColors,
+  darkThemeColors,
+  fontSizes,
+  yassifyThemeFonts,
+  darkThemeFonts,
+  loaderDelay,
+} = theme;
 
 // const StyledContainer = styled.header`
 //   ${mixins.flexBetween};
@@ -252,6 +259,7 @@ class Nav extends Component {
     const { themeName } = this.context;
     const iconMode = themeName === 'DarkMode' ? 'DarkMode' : 'YassifyMode';
     const colors = themeName === 'DarkMode' ? darkThemeColors : yassifyThemeColors;
+    const fonts = themeName === 'DarkMode' ? darkThemeFonts : yassifyThemeFonts;
 
     const StyledContainer = styled.header`
       ${mixins.flexBetween};

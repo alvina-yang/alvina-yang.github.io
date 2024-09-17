@@ -50,8 +50,8 @@ const darkThemeFonts = {
 };
 
 const yassifyThemeFonts = {
-  Title: 'Roboto, sans-serif', // Example Yassify font for Title
-  Description: 'Courier New, monospace', // Example Yassify font for Description
+  Title: 'Courgette, cursive', // Example Yassify font for Title
+  Description: 'Montserrat, sans-serif', // Example Yassify font for Description
 };
 
 const theme = {

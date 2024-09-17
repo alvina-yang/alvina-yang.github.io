@@ -8,13 +8,14 @@ import { FormattedIcon } from '@components/icons';
 import styled from 'styled-components';
 import { theme, mixins, media, Section, Heading, Dot } from '@styles';
 import { useTheme } from '@contexts';
-const { yassifyThemeColors, darkThemeColors, fontSizes, fonts } = theme;
+const { yassifyThemeColors, darkThemeColors, fontSizes, yassifyThemeFonts, darkThemeFonts } = theme;
 // Install modules
 SwiperCore.use([Navigation, Pagination, Autoplay]);
 
 const Featured = ({ data }) => {
   const { themeName } = useTheme();
   const colors = themeName === 'DarkMode' ? darkThemeColors : yassifyThemeColors;
+  const fonts = themeName === 'DarkMode' ? darkThemeFonts : yassifyThemeFonts;
 
   const StyledContainer = styled(Section)`
     ${mixins.flexCenter};

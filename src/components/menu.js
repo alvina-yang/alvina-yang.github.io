@@ -5,7 +5,7 @@ import { navLinks } from '@config';
 import styled from 'styled-components';
 import { useTheme } from '@contexts';
 import { theme, mixins, media, Dot } from '@styles';
-const { yassifyThemeColors, darkThemeColors, fontSizes, fonts } = theme;
+const { yassifyThemeColors, darkThemeColors, fontSizes, yassifyThemeFonts, darkThemeFonts } = theme;
 
 const Menu = ({ menuOpen, toggleMenu }) => {
   const handleMenuClick = e => {
@@ -19,6 +19,7 @@ const Menu = ({ menuOpen, toggleMenu }) => {
   };
   const { themeName } = useTheme();
   const colors = themeName === 'DarkMode' ? darkThemeColors : yassifyThemeColors;
+  const fonts = themeName === 'DarkMode' ? darkThemeFonts : yassifyThemeFonts;
 
   const StyledContainer = styled.div`
     position: fixed;

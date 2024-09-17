@@ -5,11 +5,20 @@ import styled from 'styled-components';
 import { theme, mixins, media, Section, FractalTreeContainer } from '@styles';
 import { FractalTree } from '@components';
 import { useTheme } from '@contexts';
-const { yassifyThemeColors, darkThemeColors, fontSizes, fonts, navDelay, loaderDelay } = theme;
+const {
+  yassifyThemeColors,
+  darkThemeColors,
+  fontSizes,
+  navDelay,
+  loaderDelay,
+  yassifyThemeFonts,
+  darkThemeFonts,
+} = theme;
 
 const Hero = ({ data }) => {
   const { themeName } = useTheme();
   const colors = themeName === 'DarkMode' ? darkThemeColors : yassifyThemeColors;
+  const fonts = themeName === 'DarkMode' ? darkThemeFonts : yassifyThemeFonts;
 
   const StyledContainer = styled(Section)`
     ${mixins.flexCenter};
